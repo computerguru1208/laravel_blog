@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string(column:'title', length: 2048);
+            $table->string(column: 'slug', length: 2048);
+            $table->string(column:'thumbmail', length:2048)->nullable();
+            $table->longText(column:'body');
+            $table->boolean(column:'active');
+            $table->datetime(column:'published_at');
+            $table->foreignIdFor(model:\App\Models\User::class, column:'user_id');
             $table->timestamps();
         });
     }
